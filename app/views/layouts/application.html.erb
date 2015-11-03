@@ -2,11 +2,31 @@
 <html>
 <head>
   <title>BigRedDot</title>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <% if request.ssl? %>
+    <%= stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css' %>
+    <%= javascript_include_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js' %>
+  <% else %>
+    <%= stylesheet_link_tag 'http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css' %>
+    <%= javascript_include_tag 'http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js' %>
+  <% end %>
+
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="container">
+  <div class="row">
+    <div class="col-xs-6">
+      <h1><%= link_to "Big Red Dot", root_path %></h1>
+    </div>
+    <div class="col-xs-6 text-right">
+      <h1 class="cart-text"><%= render 'layouts/cart_text' %></h1>
+    </div>
+  </div>
+  <hr>
+
   <% if current_user %>
     <p> hello, <%= current_user.email %> </p>
     <%= link_to 'Logout', logout_path, method: :delete, data: {confirm: 'Are you sure?'} %>
@@ -22,6 +42,8 @@
 <% end %>
 
 <%= yield %>
+
+</div>
 
 </body>
 </html>

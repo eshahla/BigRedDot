@@ -1,0 +1,13 @@
+<h1> Users index </h1>
+<% @users.each do |user|%>
+  <%= user.first_name %>
+  <%= user.last_name %>
+  <%= user.email %>
+  <%= user.password_digest %>
+  <%= user.address1 %>
+  <%= user.address2 %>
+  <%= user.state %>
+  <%= user.city %>
+  <%= user.zip %>
+  <%= user.phone_number %>
+<% end %>

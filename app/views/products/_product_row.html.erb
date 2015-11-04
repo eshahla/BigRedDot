@@ -1,4 +1,4 @@
-<div class="well">
+<div class="well <%= product.name%>">
 
   <div class="row">
     <div class="col-xs-8">
@@ -6,8 +6,9 @@
       <h4><%= "absorbency: " + product.absorbency %></small></h4>
       <h4><%= product.quantity %></small></h4>
     </div>
-    <div class="col-xs-4">
 
+    
+    <div class="col-xs-4">
       <%= form_for order_item, remote: true do |f| %>
       <h4 class="text-right">Price: <span style="color: green"><%= number_to_currency product.price %></span></h4>
         <div class="input-group">

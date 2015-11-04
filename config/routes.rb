@@ -6,11 +6,11 @@ Rails.application.routes.draw do
 
   get 'order_items/destroy'
 
-  get 'carts/show'
+  get 'cart' => 'carts#show'
 
   root 'users#index'
   resources :users
-  get 'signup' => 'users#new'
+  get 'join' => 'users#new'
 
   get 'login' => 'sessions#new'
   delete 'logout' => 'sessions#destroy'

@@ -13,3 +13,35 @@
  *= require_tree .
  *= require_self
  */
+ .logo {
+   width: 55px;
+   margin-left: 5px;
+   margin-top: 5px;
+ }
+
+
+ @media only screen and (min-width: 450.063em) {
+
+
+   .top-bar {
+     height: 15rem;
+     padding-top: 2.3rem;
+     position: relative;
+   }
+
+   .social-icons {
+     position: absolute;
+     right: 10px;
+     top: -30px;
+   }
+
+   .logo {
+     width: 40px;
+     margin-top: -2.3rem;
+   }
+ }
+
+
+
+
+ @import "foundation_and_overrides";

@@ -1,53 +1,97 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>BigRedDot</title>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <% if request.ssl? %>
-    <%= stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css' %>
-    <%= javascript_include_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js' %>
-  <% else %>
-    <%= stylesheet_link_tag 'http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css' %>
-    <%= javascript_include_tag 'http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js' %>
-  <% end %>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+    <title><%= content_for?(:title) ? yield(:title) : "Big Red Dot" %></title>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
 
-</head>
-<body>
-  <nav class="navbar navbar-default navbar-static-top">
-  <div class="container">
-    <ul class="nav navbar-nav">
-      <li><%= link_to "How it Works", root_path %> </li>
-      <li><%= link_to "Products", products_path %> </li>
-      <li><%= link_to "Reviews", root_path %> </li>
-      <li><%= link_to "Join", join_path %> </li>
-    <% if current_user %>
-      <li> hello, <%= current_user.email %> </li>
-      <li><%= link_to 'Logout', logout_path, method: :delete, data: {confirm: 'Are you sure?'} %></li>
-    <% else %>
-      <li><%= render 'sessions/form_login' %></li>
-    <% end %>
-    <li><%= link_to image_tag('BRDLogo41.jpg', size: "69x69" ), root_path %></li>
-    <li class="cart-text navbar-right"><%= render 'layouts/cart_text' %></li>
-  </ul>
-  </div>
-  </nav>
-  <div class="container">
-      <% flash.each do |name, message| %>
-      <div class="flash-message flash-message-<%= name %>">
-        <%= message %>
-      </div>
-      <% end %>
+  <body>
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet">
+
+    <nav class="top-bar" data-topbar role="navigation">
+      <ul class="title-area">
+
+        <div class="logo">
+          <li><%= link_to image_tag('BRDLogo41.png', size: "69x69" ), root_path %></li>
+        </div>
+         <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+      </ul>
+
+      <section class="top-bar-section">
+
+        <!-- Right Nav Section -->
+        <ul class="right">
+        <li class="has-dropdown">
+        <a href="#">Products</a>
+          <ul class="dropdown">
+              <li><%= link_to "Tampons", products_path %></li>
+              <li class="active"><%= link_to "Pads", products_path %></li>
+              <li class="active"><%= link_to "Customize", products_path %></li>
+            </ul>
+          </li>
 
 
+          <li class="divider"></li>
+          <li class=""><%= link_to "How it Works", how_it_works_path %> </li>
+          <li class="divider"></li>
+          <li class=""><%= link_to "Reviews", reviews_path %></li>
+          <li class="divider"></li>
+          <li class=""><%= link_to "Join", join_path %></li>
+          <li class="divider"></li>
+          <li class="has-dropdown">
+          <a href="#">Login</a>
+            <ul class="dropdown">
+                <li><% if current_user %>
+                    <li> Hello, <%= current_user.email %> </li>
+                    <li><%= link_to 'Logout', logout_path, method: :delete, data: {confirm: 'Are you sure?'} %></li>
+                  <% else %>
+                    <li><%= render 'sessions/form_login' %></li>
+                  <% end %></li>
+              </ul>
+            </li>
 
 
-<%= yield %>
+          <li class="divider"></li>
+          <li class="cart-text navbar-right"><%= render 'layouts/cart_text' %></li>
 
-</div>
+        </ul>
+        <ul class="social-icons">
+          <li><a href=""><i class="fi-telephone"></i></a></li>
+          <li><a href=""><i class="fi-social-linkedin"></i></a></li>
+          <li><a href=""><i class="fi-social-twitter"></i></a></li>
+          <li><a href=""><i class="fi-social-facebook"></i></a></li>
+          <li><a href=""><i class="fi-social-instagram"></i></a></li>
+        </ul>
 
-</body>
+
+
+
+
+        <% flash.each do |name, message| %>
+        <div class="flash-message flash-message-<%= name %>">
+          <%= message %>
+        </div>
+        <% end %>
+
+
+
+
+
+
+
+      </section>
+
+    </nav>
+
+
+    <%= yield %>
+
+  </body>
 </html>

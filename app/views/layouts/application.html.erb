@@ -17,30 +17,33 @@
 
 </head>
 <body>
+  <nav class="navbar navbar-default navbar-static-top">
   <div class="container">
-  <div class="row">
-    <div class="col-xs-6">
-      <h1><%= link_to "Big Red Dot", root_path %></h1>
-    </div>
-    <div class="col-xs-6 text-right">
-      <h1 class="cart-text"><%= render 'layouts/cart_text' %></h1>
-    </div>
+    <ul class="nav navbar-nav">
+      <li><%= link_to "How it Works", root_path %> </li>
+      <li><%= link_to "Products", products_path %> </li>
+      <li><%= link_to "Reviews", root_path %> </li>
+      <li><%= link_to "Join", join_path %> </li>
+    <% if current_user %>
+      <li> hello, <%= current_user.email %> </li>
+      <li><%= link_to 'Logout', logout_path, method: :delete, data: {confirm: 'Are you sure?'} %></li>
+    <% else %>
+      <li><%= render 'sessions/form_login' %></li>
+    <% end %>
+    <li><%= link_to image_tag('BRDLogo41.jpg', size: "69x69" ), root_path %></li>
+    <li class="cart-text navbar-right"><%= render 'layouts/cart_text' %></li>
+  </ul>
   </div>
-  <hr>
+  </nav>
+  <div class="container">
+      <% flash.each do |name, message| %>
+      <div class="flash-message flash-message-<%= name %>">
+        <%= message %>
+      </div>
+      <% end %>
 
-  <% if current_user %>
-    <p> hello, <%= current_user.email %> </p>
-    <%= link_to 'Logout', logout_path, method: :delete, data: {confirm: 'Are you sure?'} %>
-  <% else %>
-    <%= link_to 'Please login', login_path %>
-  <% end %>
 
-  <% flash.each do |name, message| %>
-  <div class="flash-message flash-message-<%= name %>">
-    <%= message %>
-  </div>
 
-<% end %>
 
 <%= yield %>
 

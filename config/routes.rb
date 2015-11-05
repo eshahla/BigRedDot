@@ -1,13 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'order_items/create'
-
-  get 'order_items/update'
-
-  get 'order_items/destroy'
-
-  get 'cart' => 'carts#show'
-
   root 'users#index'
   resources :users
   get 'join' => 'users#new'

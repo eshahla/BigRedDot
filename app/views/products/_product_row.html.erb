@@ -1,16 +1,15 @@
 <div class="well <%= product.name%>">
 
-  <div class="row">
     <div class="col-xs-8">
-      <h4><%= product.name %></small></h4>
-      <h4><%= "absorbency: " + product.absorbency %></small></h4>
-      <h4><%= product.quantity %></small></h4>
+      <p><%= product.name %></small></p>
+      <p><%= "absorbency: " + product.absorbency %></small></p>
+      <p><%= product.quantity %></small></p>
     </div>
 
 
     <div class="col-xs-4">
       <%= form_for order_item do |f| %>
-      <h4 class="text-right">Price: <span style="color: green"><%= number_to_currency product.price %></span></h4>
+      <p class="text-right">Price: <span style="color: green"><%= number_to_currency product.price %></span></p>
         <div class="input-group">
           <%= f.number_field :quantity, value: 1, class: "form-control", min: 1 %>
           <div class="input-group-btn">

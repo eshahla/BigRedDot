@@ -31,9 +31,10 @@
         <li class="has-dropdown">
         <a href="#">Products</a>
           <ul class="dropdown">
-              <li><%= link_to "Tampons", products_path %></li>
-              <li class="active"><%= link_to "Pads", products_path %></li>
-              <li class="active"><%= link_to "Customize", products_path %></li>
+              <li><%= link_to "Products", products_path %></li>
+              <li class="active"><%= link_to "Tampons", tampons_path %></li>
+              <li class="active"><%= link_to "Pads", pads_path %></li>
+              <li class="active"><%= link_to "Customize", customize_path %></li>
             </ul>
           </li>
 
@@ -53,7 +54,8 @@
                     <li><%= link_to 'Logout', logout_path, method: :delete, data: {confirm: 'Are you sure?'} %></li>
                   <% else %>
                     <li><%= render 'sessions/form_login' %></li>
-                  <% end %></li>
+                  <% end %>
+                </li>
               </ul>
             </li>
 
@@ -63,11 +65,11 @@
 
         </ul>
         <ul class="social-icons">
-          <li><a href=""><i class="fi-telephone"></i></a></li>
+          <li><a href="contact"><i class="fi-telephone"></i></a></li>
           <li><a href=""><i class="fi-social-linkedin"></i></a></li>
-          <li><a href=""><i class="fi-social-twitter"></i></a></li>
-          <li><a href=""><i class="fi-social-facebook"></i></a></li>
-          <li><a href=""><i class="fi-social-instagram"></i></a></li>
+          <li><a href="https://twitter.com/BigRedDotCo"><i class="fi-social-twitter"></i></a></li>
+          <li><a href="https://www.facebook.com/Big-Red-Dot-922522001116807/"><i class="fi-social-facebook"></i></a></li>
+          <li><a href="https://instagram.com/bigreddotco/"><i class="fi-social-instagram"></i></a></li>
         </ul>
 
 
